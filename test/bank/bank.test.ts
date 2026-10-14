@@ -55,6 +55,12 @@ describe('DepositContract tests', () => {
   test('Calculation of the amount of interest on a deposit', () => {
     expect(contract.calculateInterest()).toBe(50);
   })
+  test('Correct amount', () => {
+    expect(contract.amount).toBe(1000);
+  })
+  test('Correct interest rate', () => {
+    expect(contract.interestRate).toBe(5);
+  })
 })
 
 describe('LoanContract tests', () => {
@@ -79,10 +85,16 @@ describe('LoanContract tests', () => {
     expect(contract.isActive).toBeTruthy()
   });
   test('Correct loan amount', () => {
-    expect(contract.loanAmount).toBe(10000)
+    expect(contract.loanAmount).toBe(10000);
   });
   test('Correct calculation of the total amount of loan payments', () => {
     expect(contract.calculateTotalPayment()).toBe(10400);
+  })
+  test('Correct monthly payment', () => {
+    expect(contract.monthlyPayment).toBe(160);
+  })
+  test('Correct loan term months', () => {
+    expect(contract.loanTermMonths).toBe(65);
   })
 })
 
@@ -113,4 +125,10 @@ describe('InsuranceContract tests', () => {
     'Correct calculation of the total amount of insurance payments for the entire term', () => {
       expect(contract.calculateTotalPremium()).toBe(2500);
     })
+  test('Correct premium', () => {
+    expect(contract.premium).toBe(500);
+  })
+  test('Correct term years', () => {
+    expect(contract.termYears).toBe(5);
+  })
 })
